@@ -17,10 +17,25 @@ const win_combos = [
 
 squares.forEach(square => {
     square.addEventListener('click', function() {
-        const child = this.querySelector('.X');
-        if (child) {
-            child.classList.add('active');
-        }
-        console.log(this.id);
+        if(userTurn){
+            const child = this.querySelector('.X');
+            const xIndex = this.id;
+            if (child) {
+                child.classList.add('active');
+                gameBoard[xIndex-1] = "X";
+            }
+        } 
+        userTurn = false;
+
+        computerTurn();
+        
+        console.log(gameBoard);
     });
 });
+
+function computerTurn(){
+
+
+
+    userTurn = true;
+}
