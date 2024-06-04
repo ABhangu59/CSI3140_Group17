@@ -10,7 +10,21 @@
 .square{
     border: 1px solid black;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .square:hover{
     background-color: blanchedalmond;
+}
+.X{
+    font-size: 2em;
+    display: none;
+}
+.O{
+    font-size: 2em;
+    display: none;
+}
+.active {
+    display: flex;
 }
