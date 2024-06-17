@@ -1,18 +1,3 @@
-body{
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-.container{
-    width: 100vw;
-    height: 100vh;
-    background-color: blanchedalmond;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
-    box-sizing: border-box;
-    flex-direction: column;
-}
 .dice-container{
     width: 100%;
     height: 30%;
@@ -47,7 +32,3 @@ body{
 .dot5 { top: 50%; left: 80%; }
 .dot6 { top: 80%; left: 10%; }
 .dot7 { top: 80%; left: 80%; }
-
-.kept{
-    border: 5px solid red;
-}
