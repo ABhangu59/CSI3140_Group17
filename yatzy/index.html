@@ -7,11 +7,14 @@
     <title>Yatzy</title>
 </head>
 <body>
+    <div class="yatzy-info">
+        <div class="yatzy-header">Play Yatzy!</div>
+        <div>When the dice are highlighted red you're keeping them</div>
+        <div>Restart by refreshing the page</div>
+        <div class="rollsLeft"> Rolls left: 3</div>
+    </div>
     <div class="container">
-        <div class="yatzy-info">
-            <h3>Play Yatzy!</h3>
-            <div>When the dice are highlighted red you're keeping them</div>
-        </div>
+        
         <div class="dice-container">
             <div class="dice" id="dice1">
 
@@ -29,15 +32,11 @@
 
             </div>
         </div>
+        <div class="scorelist"></div>
         <button id="rollButton">Roll Dice</button>
-        <footer class="footer">
-            <p>&copy; 2024 Yatzy Game. All rights reserved.</p>
-        </footer>
     </div>
     <script src="./yatzy_game.js"></script>
+    <script src="./yatzy_engine.js"></script>
     <script src="./dice.js"></script>
-
- 
-    
 </body>
 </html>
