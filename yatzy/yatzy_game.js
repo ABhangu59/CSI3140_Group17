@@ -5,11 +5,11 @@ class YatzyGame {
         this.keepDice = [false, false, false, false, false]; 
     }
 
-    updateDiceValues(newValues) {
+    rollDice() {
         if (this.rollNumber < 3) {
             for (let i = 0; i < 5; i++) {
                 if (!this.keepDice[i]) {
-                    this.diceValues[i] = newValues[i];
+                    this.diceValues[i] = Math.floor(Math.random() * 6) + 1;
                 }
             }
             this.rollNumber++;

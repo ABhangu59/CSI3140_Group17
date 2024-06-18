@@ -1,11 +1,58 @@
 body{
     margin: 0;
-    font-family: Arial, sans-serif;
+    background-color: #daf6ea;
+}
+
+.top-header{
+    width: 100vw;
+    overflow: hidden;
+    height: 1vh;
+    padding: 1.5em;
+    background: #333;
+    color: #fff;
+    border-bottom: #77a0a2 3px solid;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 2em;
+    font-weight: 700;
+
+}
+
+.top-header > a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.top-header > a {
+    text-decoration: none;
+}
+
+
+.yatzy-info{
+    padding: 2em;
+    width: 100vw;
+    height: 40vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.yatzy-header{
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.rollsLeft{
+    margin-top: 2rem;
+    font-size: 1.5em;
+    text-decoration: underline;
 }
 .container{
     width: 100vw;
-    height: 100vh;
-    background-color: blanchedalmond;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +62,7 @@ body{
 }
 .dice-container{
     width: 100%;
-    height: 30%;
+    height: 50%;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -49,5 +96,50 @@ body{
 .dot7 { top: 80%; left: 80%; }
 
 .kept{
-    border: 5px solid red;
+    border: 5px solid orangered;
 }
+.scorelist{
+    padding: 2em 0;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.buttonContainer > button {
+    padding: 0.6em 1.5em; 
+    font-size: 1.4em;
+    font-weight: bold;
+    color: white;
+    background-color: #37b33d;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer > button:hover {
+    background-color: #eda43d;
+    transform: translateY(-3px);
+}
+
+.buttonContainer > a > button {
+    padding: 0.6em 1.5em;
+    font-size: 1.4em; 
+    font-weight: bold;
+    color: white;
+    background-color: #3089f5;
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer > a > button:hover {
+    background-color: #eda43d;
+    transform: translateY(-3px);
+}
+
+

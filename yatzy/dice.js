@@ -42,50 +42,85 @@ function showDiceNumber(dice, number) {
     }
 }
 const game = new YatzyGame();
+let rollsLeft = 3;
+let rollsDone = 1;
+
+function updateRollsLeftText() {
+    const rollContainer = document.querySelector('.rollsLeft');
+    rollContainer.textContent = `Rolls left: ${rollsLeft}`;
+}
+function updateScoreBoard(overallScore, bonus){
+    const scoreContainer = document.querySelector('.scorelist');
+    var scoreRecord = document.createElement('div');
+    scoreRecord.textContent = `Roll: ${rollsDone} Overall Score: ${overallScore}, Bonus: ${bonus}`
+    scoreContainer.appendChild(scoreRecord);
+}
 
 document.getElementById('rollButton').addEventListener('click', function() {
     if (game.rollNumber < 3) {
-        let newDiceValues = [];
-        for (let i = 0; i < 5; i++) {
-            newDiceValues.push(Math.floor(Math.random() * 6) + 1);
-        }
-        game.updateDiceValues(newDiceValues);
+        game.rollDice();
 
         for (let i = 1; i <= 5; i++) {
             let dice = document.getElementById('dice' + i);
             showDiceNumber(dice, game.diceValues[i - 1]);
         }
 
-        console.log(game.getState()); 
+        console.log(game.getState());
+        calculateAndUpdateScores();
+        rollsLeft--;
+        rollsDone++;
+        updateRollsLeftText();
     } else {
         console.log("No more rolls left in this turn.");
     }
 });
 
-function toggleKeep(index) {
-    game.toggleKeepDice(index);
-    const dice = document.getElementById('dice' + (index + 1));
-    if (game.keepDice[index]) {
-        dice.classList.add('kept');
-    } else {
-        dice.classList.remove('kept');
-    }
-    console.log(game.getState());
-}
-
 for (let i = 0; i < 5; i++) {
     const dice = document.getElementById('dice' + (i + 1));
     dice.addEventListener('click', function() {
-        toggleKeep(i);
+        game.toggleKeepDice(i);
+        if (game.keepDice[i]) {
+            dice.classList.add('kept');
+        } else {
+            dice.classList.remove('kept');
+        }
+        console.log(game.getState());
     });
 }
+
 function startNewTurn() {
     game.newTurn();
     for (let i = 1; i <= 5; i++) {
         let dice = document.getElementById('dice' + i);
         clearDots(dice);
         showDiceNumber(dice, game.diceValues[i - 1]);
-        dice.classList.remove('kept'); 
+        dice.classList.remove('kept');
     }
     console.log("New turn started:", game.getState());
+}
+
+function calculateAndUpdateScores() {
+    const selectedScoreBox = 'ones'; // This can be dynamically set based on user selection
+    const score = calculateScore(game, selectedScoreBox);
+    console.log(`Score for ${selectedScoreBox}:`, score);
+
+    const scores = {
+        ones: calculateScore(game, 'ones'),
+        twos: calculateScore(game, 'twos'),
+        threes: calculateScore(game, 'threes'),
+        fours: calculateScore(game, 'fours'),
+        fives: calculateScore(game, 'fives'),
+        sixes: calculateScore(game, 'sixes'),
+        threeOfAKind: calculateScore(game, 'threeOfAKind'),
+        fourOfAKind: calculateScore(game, 'fourOfAKind'),
+        fullHouse: calculateScore(game, 'fullHouse'),
+        smallStraight: calculateScore(game, 'smallStraight'),
+        largeStraight: calculateScore(game, 'largeStraight'),
+        yahtzee: calculateScore(game, 'yahtzee'),
+        chance: calculateScore(game, 'chance')
+    };
+
+    const { overallScore, bonus } = updateOverallScore(scores);
+    console.log(`Overall Score: ${overallScore}, Bonus: ${bonus}`);
+    updateScoreBoard(overallScore, bonus)
 }
