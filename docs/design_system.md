@@ -53,7 +53,7 @@ Our header used is the same one we utilized in our assignment 1, to keep themati
 - **Accent Colour Hex Code:** FF4500
 - **Accent Colour Usage:** Used to highlight the borders of selected die
 
-These colors are sued because they appeal to the viewers eyes. We used complimenting colors to utilize color theory to help the flow of our website. 
+These colors are used because they appeal to the viewers eyes. We used complimenting colors to utilize color theory to help the flow of our website. 
 
 ---
 
