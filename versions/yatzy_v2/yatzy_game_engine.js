@@ -4,9 +4,6 @@ function calculateScore(game, scoreBox) {
         counts[value - 1]++;
     });
 
-    console.log(game.diceValues)
-    console.log(counts)
-
     switch (scoreBox) {
         case 'ones':
             return counts[0] * 1;
