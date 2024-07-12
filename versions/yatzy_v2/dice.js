@@ -27,6 +27,41 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     });
 
+    var dices =document.getElementsByClassName('dice')
+    console.log(dices.item(0))
+    console.log(typeof dices)
+
+    for(let i = 0; i < 5; i++){
+        dices.item(i).addEventListener('click', () => {
+            fetch('./yatzy_server.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ action: 'keepDice', index: i})
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+            })
+        })
+    }
+
+    fetch('./yatzy_server.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ action: 'start_game'})
+    })
+    .then(response => response.json())
+    .then(data => {
+        updateGameState(data);
+    })
+
 });
 function clearDots(dice) {
     while (dice.firstChild) {

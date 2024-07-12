@@ -99,9 +99,6 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
-    $game = new YatzyGame();
-    $_SESSION['game'] = $game;
-
     if ($data['action'] === 'start_game') {
         $game = new YatzyGame();
         $_SESSION['game'] = $game;
