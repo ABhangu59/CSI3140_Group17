@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>A&T's Yatzy</title>
+</head>
+<body>
+    <div class="top-header">
+        <a href="../public/index.html"> Portfolio | Tolu E. | Ali B. </a>
+    </div>
+    <div class="yatzy-info">
+        <div class="yatzy-header">Let's Play Yatzy!</div>
+        <h3>Welcome to Yatzy! Here are some basic rules:</h3>
+            <ol>
+                <li>Rolling the Dice: Roll five dice up to three times per turn.</li>
+                <li>Choosing Dice to Keep: After each roll, select which dice to keep and which to reroll by clicking on them.</li>
+                <li>Scoring: One of these categories will be used to score your dice after your final roll. Categories include:
+                    <ul>
+                        <li>Upper Section: Score the sum of the dice showing a specific number (Ones, Twos, etc.).</li>
+                        <li>Lower Section: Special combinations like Three of a Kind, Full House, Small Straight, etc.</li>
+                    </ul>
+                </li>
+                <li>Winning: The player with the highest total score wins after all categories are filled.</li>
+            </ol>
+        <div class="rollsLeft"> Rolls Left: 3</div>
+    </div>
+
+    <div class="container">
+        <div class="dice-container">
+            <div class="dice" id="dice1">
+            </div>
+            <div class="dice" id="dice2">
+            </div>
+            <div class="dice" id="dice3">
+            </div>
+            <div class="dice" id="dice4">
+            </div>
+            <div class="dice" id="dice5">
+            </div>
+        </div>
+
+        <div class="scorelist"></div>
+
+        <div class="buttonContainer">
+            <button id="rollButton">Roll Dice</button>
+            <a href="../public/index.html" >
+            <button id="backToHomeButton">Return</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="leaderboard-div" >
+        <h2> Leaderboard: </h2>
+        <ul id="leaderboard"></ul>
+    </div>
+    
+    <script src="./yatzy_game.js"></script>
+    <script src="./yatzy_game_engine.js"></script>
+    <script src="./dice.js"></script>   
+</body>
+</html>

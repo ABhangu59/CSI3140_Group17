@@ -7,3 +7,7 @@
     - **Lower Section**: Three of a Kind, Four of a Kind, Full House, Small Straight, Large Straight, Yahtzee, Chance (each category has specific scoring rules)
 4. **Filling the Scorecard**: Each category can only be used once, so choose wisely to maximize your score.
 5. **Winning**: The player with the highest total score after all categories have been filled wins.
+
+
+
+[Design System](/docs/design_system.md)
