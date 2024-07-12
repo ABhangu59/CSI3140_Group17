@@ -8,6 +8,9 @@ class YatzyGame {
     public $keepDice; 
     public $diceValues; 
 
+    public $scoreValues; 
+
+
     
     public function __construct(){
         $this->rollNumber = 0;
@@ -18,6 +21,7 @@ class YatzyGame {
             'smallStraight' => 0, 'largeStraight' => 0, 'yahtzee' => 0,'total' => 0
         ];
         $this->keepDice = [false, false, false, false, false];
+        $this->scoreValues = [];
     }
 
 
@@ -29,11 +33,13 @@ class YatzyGame {
                 }
             }
             $this->rollNumber++;
+            $this->calculateScore();
         }   
         
         else {
             echo '<script>console.log("No more rolls left in this turn.");</script>';
         }
+
     }
 
     public function toggleKeepDice($index){
@@ -72,26 +78,21 @@ class YatzyGame {
         $this->score['total'] = array_sum($this->score);
     }
 
-
-}
-
-class Leaderboard{
-    public $scoreValues; 
-    public function __construct() 
-    {
-        $this->scoreValues = [];
+    public function addScore($score) {
+        array_push($this->scoreValues, $score);
+        // Keep only top 10 scores for example
+        arsort($this->scoreValues);
+        $this->scoreValues = array_slice($this->scoreValues, 0, 10);
     }
+
 }
+
 
 if (!isset($_SESSION['game'])) {
     $_SESSION['game'] = new YatzyGame();
 }
-if (!isset($_SESSION['leaderboard'])) {
-    $_SESSION['leaderboard'] = new Leaderboard();
-}
 
 $game = $_SESSION['game'];
-$leaderboard = $_SESSION['leaderboard'];
 
 header('Content-Type: application/json');
 
@@ -104,8 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($data['action'] === 'start_game') {
         $game = new YatzyGame();
         $_SESSION['game'] = $game;
-    } elseif ($data['action'] == 'rollDice') {
+    } elseif ($data['action'] == 'rollDice' && $data['timesLeft'] > 0) {
         $game->rollDice();
+    } elseif ($data['action'] == 'keepDice'){
+        $game->toggleKeepDice($data['index']);
     }
 
     echo json_encode(['game' => $game]);

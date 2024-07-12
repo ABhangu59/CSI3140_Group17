@@ -143,6 +143,13 @@ body{
     transform: translateY(-3px);
 }
 
+.buttonContainer > button:disabled {
+    background-color: #ccc;
+    color:#77a0a2;
+    cursor: not-allowed;
+}
+
+
 
 .leaderboard-div {
     text-decoration: underline;
