@@ -149,9 +149,15 @@ body{
     cursor: not-allowed;
 }
 
-
-
-.leaderboard-div {
+.leaderboard-div > h2 {
     text-decoration: underline;
-    padding: 2em ;   
+}
+
+#leaderboard li {
+   display: block; 
+   padding: 0.2em;
+  background-color: lightpink; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100px;
 }

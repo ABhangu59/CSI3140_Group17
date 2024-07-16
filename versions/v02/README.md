@@ -9,5 +9,11 @@
 5. **Winning**: The player with the highest total score after all categories have been filled wins.
 
 
+## Setup and How To Run:
+
+1. **Local Server**: Ensure that you have XAMPP installed and the Apache web server running, XAMPP can be installed from this link: https://sourceforge.net/projects/xampp/ 
+2. **Running Apache Server**: In the XAMPP, move the repository folder to htdocs folder. 
+3. **Play The Game**: Go to a web browser and enter http://localhost/csi3140_group17/public/index.html and from there select the image with the dice and have a great playing! 
+
 
 [Design System](/docs/design_system.md)

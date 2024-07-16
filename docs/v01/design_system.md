@@ -1,4 +1,4 @@
-# CSI3140 - Yatzy Design System for Yatzy V-02 
+# CSI3140 - Yatzy Design System
 
 This document outlines the design choices that were made in the development of A&T's Yatzy, which will include a brief discussion on the different components of the UI and the code. 
 
@@ -45,10 +45,6 @@ Our header used is the same one we utilized in our assignment 1, to keep themati
 - **Roll Button Colour Hex Code:** #37b33d
 - **Roll Button Colour Usage :** Button used for rolling the Dice 
 
-- **No More Rolls Button Colour:** Light Pink
-- **No More Rolls Button Colour Hex Code:** #FFB6C1
-- **No More Rolls Button Colour Usage :** Button used to not allow anymore dice rolls. 
-
 - **Back Button Colour:** Blue
 - **Back Button Colour Hex Code:** #3089f5
 - **Back Button Colour Usage :** Button used for the back button 
@@ -60,31 +56,34 @@ Our header used is the same one we utilized in our assignment 1, to keep themati
 These colors are used because they appeal to the viewers eyes. We used complimenting colors to utilize color theory to help the flow of our website. 
 
 ---
-## JavaScript
+
+### JavaScript
+
 Our JavaScript implementation for A&T's Yatzy manages the core game logic, including dice rolls, score calculations, and UI interactions. Below is a summary of the main components and their functionalities:
-JavaScript
 
-1. **Roll Management**
-Purpose: Handles dice rolls and updates the number of rolls left.
-Key Methods:
-- rollDice(): Rolls the dice and updates the game state accordingly.
-- updateRollsLeftText(rolls): Updates the text indicating the number of rolls left.
+#### 1. YatzyGame Class
+- **Purpose:** Manages the state of the game, including the number of rolls, dice values, and which dice are kept.
+- **Key Methods:**
+  - `rollDice()`: Rolls the dice, allowing up to three rolls per turn.
+  - `toggleKeepDice(index)`: Toggles whether a specific die is kept.
+  - `newTurn()`: Resets the game state for a new turn.
+  - `getState()`: Returns the current state of the game.
 
-2. **Dice Management**
-Purpose: Manages the selection and visual representation of dice.
-Key Methods:
-- toggleKeepDice(index): Toggles whether a specific die is kept.
-- clearDots(dice): Clears the current dots from a die.
-- addDot(dice, className): Adds a dot to a die.
-- showDiceNumber(dice, number): Displays the appropriate dots on a die based on its value.
+#### 2. Score Calculation Functions
+- **Purpose:** Calculates scores based on the current dice values and the selected score category.
+- **Key Functions:**
+  - `calculateScore(game, scoreBox)`: Calculates the score for a specific category (e.g., ones, twos, full house).
+  - `updateOverallScore(scores)`: Calculates the overall score, including any bonus points.
 
-3. **Leaderboard Management**
-Purpose: Maintains and displays the top 10 highest scores.
-Key Functions:
-- updateGameState(data): Updates the game state with the latest roll data and manages the leaderboard.
-- displayLeaderboard(): Creates and appends list items for each score in the highest scores array.
+#### 3. UI Interaction and Updates
+- **Purpose:** Manages the visual representation of the dice and updates the UI based on user interactions.
+- **Key Functions:**
+  - `showDiceNumber(dice, number)`: Displays the appropriate dots on a die based on its value.
+  - `updateRollsLeftText()`: Updates the text indicating the number of rolls left.
+  - `updateScoreBoard(overallScore, bonus)`: Updates the score display with the current overall score and any bonus points.
 
-**Event Listeners**:
-- Roll Button: Initiates dice rolls and updates the UI accordingly.
-- Dice Click: Toggles the 'kept' status of a die when clicked, visually indicating which dice are held.
-- This structure ensures the game logic is well-organized and the UI is responsive to user interactions, providing an engaging and intuitive gameplay experience. Feel free to take a look at the JavaScript files in the yatzy folder.
+#### Event Listeners
+- **Roll Button:** Handles dice rolls and updates the UI accordingly.
+- **Dice Click:** Toggles the 'kept' status of a die when clicked, visually indicating which dice are held.
+
+This structure ensures the game logic is well-organized and the UI is responsive to user interactions, providing an engaging and intuitive gameplay experience. Feel free to take a look at the JavaScript files in the yatzy folder. 

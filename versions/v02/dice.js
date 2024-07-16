@@ -1,3 +1,4 @@
+var highestScores = new Array(10);
 document.addEventListener('DOMContentLoaded', () => {
 
     var rollsLeftText = document.querySelector('.rollsLeft').textContent;
@@ -23,11 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if(rolls == 0) {
                document.getElementById('rollButton').disabled = true;
+                var rollerBox = document.getElementById('rollLeftText');
+                rollerBox.textContent = `Rolls Left: 0`; // Update text content
+            }
+            else {
+                var rollerBox = document.getElementById('rollLeftText');
+                rollerBox.textContent = `Rolls Left: ${rolls}`; // Update text content
             }
         })
     });
 
-    var dices =document.getElementsByClassName('dice')
+    var dices = document.getElementsByClassName('dice')
     console.log(dices.item(0))
     console.log(typeof dices)
 
@@ -47,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log('Response data:', data);
             })
+
+            dices.item(i).style.outline = '2px solid red';            
         })
     }
 
@@ -107,11 +116,44 @@ function showDiceNumber(dice, number) {
 }
 function updateGameState(data) {
     console.log('Updating game state:', data);
+    console.log(data.game.score.total);
+
+    
+    var containsNull = highestScores.every(function(v) {return v=== null})
+
+    if(containsNull){
+        highestScores.push(data.game.score.total)
+        highestScores.sort()
+        console.log(highestScores);
+    }
+    else if (highestScores[0] < data.game.score.total){
+        highestScores.push(data.game.score.total)
+        highestScores.sort((a, b) => b - a);        
+        console.log(highestScores);
+    }
+    console.log(highestScores);
+
+
     data.game.diceValues.forEach(
         function(value, index){
             let dice = document.getElementById('dice' + (index+1));
             showDiceNumber(dice,value);
         }
     )
+
+
+
+    const leaderboard = document.getElementById("leaderboard");
+    leaderboard.innerHTML = '';
+    // Create and append list items for each score in highestScores
+
+     highestScores.forEach(function(score) {
+        if(score !== 0) {
+            const listItem = document.createElement('li');
+        listItem.textContent = score;
+        leaderboard.appendChild(listItem);
+        }
+    }); 
+    
     
 }
