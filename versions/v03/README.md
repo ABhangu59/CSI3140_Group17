@@ -13,7 +13,10 @@
 
 1. **Local Server**: Ensure that you have XAMPP installed and the Apache web server running, XAMPP can be installed from this link: https://sourceforge.net/projects/xampp/ 
 2. **Running Apache Server**: In the XAMPP, move the repository folder to htdocs folder. 
-3. **Play The Game**: Go to a web browser and enter http://localhost/csi3140_group17/public/index.html and from there select the image with the dice and have a great playing! 
+3. **Run Database**: Install and Follow the steps to get your MySQL database server running at this link: https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting. NOTE: We omitted our DB password and information, allowing players to add their own. 
+4. **Connect DB**: Connect the DB to the game and add your credentials to the yatzy_server.php file at line 12 to 16, then run the game
+5. **Play The Game**: Go to a web browser and enter http://localhost/csi3140_group17/public/index.html and from there select the version and have a great playing! 
 
 
-[Design System](/docs/design_system_v02.md)
+
+[Design System](/docs/design_system_v03.md)
